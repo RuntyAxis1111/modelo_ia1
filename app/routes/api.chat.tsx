@@ -1,9 +1,9 @@
 import { json } from "@remix-run/node";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import OpenAI from "openai";
-import { fetchLatestNews } from "~/lib/news";
+import { fetchLatestNews } from "~/lib/news.ts";
 import { executeSupabaseQuery } from "~/lib/supabase";
-import { OPENAI_API_KEY, MODEL_NAME } from "~/lib/load_keys.py"; // Simulate loading from Python file
+import { OPENAI_API_KEY, MODEL_NAME } from "~/lib/load_keys"; // Changed from .py to TypeScript import
 
 // In a real app, use process.env.OPENAI_API_KEY
 const openai = new OpenAI({
@@ -17,8 +17,8 @@ export async function action({ request }: { request: Request }) {
   const systemPrompt = `Eres **PALF Assistant**. Tu misión:
 • Genera reportes breves y accionables basados en los datos de Supabase.
 • Usa SQL via supabase-js cuando el usuario pregunte por cifras o tendencias.
-• Después de preparar la respuesta, adjunta una “Nota de actualidad” con la
-  noticia más reciente sobre “Pase a la Fama” o “PALF” (título, medio, fecha, URL).
+• Después de preparar la respuesta, adjunta una "Nota de actualidad" con la
+  noticia más reciente sobre "Pase a la Fama" o "PALF" (título, medio, fecha, URL).
 • Responde SIEMPRE en español y en tono profesional/respetuoso.
 • Si no hay noticias en <24 h di:
   «No se encontraron noticias nuevas sobre PALF en las últimas 24 h.»`;
