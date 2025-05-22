@@ -1,4 +1,4 @@
-import { NEWSAPI_KEY } from "~/lib/load_keys";
+import { NEWSAPI_KEY } from "./load_keys";
 
 export async function fetchLatestNews(q: string) {
   const apiKey = NEWSAPI_KEY;
