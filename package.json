@@ -17,7 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@supabase/supabase-js": "^2.44.2",
-    "@vercel/ai": "^3.1.21",
+    "@vercel/ai": "^1.0.0",
     "openai": "^4.52.0"
   },
   "devDependencies": {
